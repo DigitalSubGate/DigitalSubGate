@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigitalSubGate — Global Crypto Gateway</title>
+    <title>DigitalSubGate — Global Payment Gateway</title>
     <style>
         body { background: #0f172a; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding: 20px; }
         .card { background: #1e293b; padding: 30px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); width: 100%; max-width: 420px; border: 1px solid #334155; }
@@ -45,7 +45,7 @@
         </div>
 
         <div class="wallet-box">
-            <span class="info-label">Deposit Network: <b>USDT (BEP-20 / BNB Chain)</b></span>
+            <span class="info-label">Network: <b>USDT (BEP-20 / BNB Chain)</b></span>
             <div class="data-text">0xC8880cF7eE8b1C35Cc08e67Bde17AbF70E554434</div>
             
             <span class="info-label">Secure Contact (Discord):</span>
@@ -61,23 +61,25 @@
         <a href="mailto:DigitalSubGate@proton.me" class="btn">🚀 Confirm Transaction</a>
         
         <div class="footer-note">
-            * All transactions are processed via <b>USDT BEP-20</b> protocol only.<br>
-            Please send the transaction hash or screenshot to our secure channels after payment.
+            * Transactions processed via <b>USDT BEP-20</b> protocol only.<br>
+            Please provide transaction hash or screenshot after payment.
         </div>
     </div>
 
     <script>
+        /** 
+         * Calculation logic:
+         * Base price + 15 USDT Profit + 1 USDT Network Fee
+         */
         function updatePrice() {
             const serviceVal = document.getElementById('service').value;
             const customVal = document.getElementById('customAmount');
-            let amount = serviceVal == "0" ? customVal.value : serviceVal;
+            let amount = (serviceVal == "0") ? customVal.value : serviceVal;
             
             if (serviceVal == "0") customVal.style.display = "block";
             else customVal.style.display = "none";
             
-            // Formula: Base Price + 15 USDT Profit + 1 USDT Network Fee
-            const finalUsdt = parseFloat(amount) + 16;
-            
+            const finalUsdt = parseFloat(amount || 0) + 16;
             document.getElementById('finalPrice').innerText = finalUsdt > 16 ? finalUsdt.toFixed(2) + " USDT" : "0.00 USDT";
         }
         updatePrice();
