@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigitalSubGate — Global Payment Gateway</title>
+    <title>DigitalSubGate — Global Crypto Gateway</title>
     <style>
         body { background: #0f172a; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding: 20px; }
         .card { background: #1e293b; padding: 30px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); width: 100%; max-width: 420px; border: 1px solid #334155; }
@@ -37,7 +37,8 @@
             <option value="15">PlayStation Plus Extra ($15)</option>
             <option value="0">Manual Amount ($)</option>
         </select>
-        <input type="number" id="customAmount" placeholder="Enter custom USD amount" style="display:none; margin-top:12px;" oninput="updatePrice()">
+        
+        <input type="number" id="customAmount" placeholder="Enter custom USD amount" style="display:none; margin-top:12px;" oninput="updatePrice()" onkeyup="updatePrice()">
 
         <div class="result">
             <div class="price-label">Total to Transfer:</div>
@@ -67,22 +68,28 @@
     </div>
 
     <script>
-        /** 
-         * Calculation logic:
-         * Base price + 15 USDT Profit + 1 USDT Network Fee
+        /**
+         * Logic: Base price + 15 USDT Profit + 1 USDT Network Fee
          */
         function updatePrice() {
-            const serviceVal = document.getElementById('service').value;
-            const customVal = document.getElementById('customAmount');
-            let amount = (serviceVal == "0") ? customVal.value : serviceVal;
+            const serviceSelector = document.getElementById('service');
+            const customInput = document.getElementById('customAmount');
             
-            if (serviceVal == "0") customVal.style.display = "block";
-            else customVal.style.display = "none";
+            if (serviceSelector.value === "0") {
+                customInput.style.display = "block";
+            } else {
+                customInput.style.display = "none";
+            }
+
+            let baseValue = (serviceSelector.value === "0") ? customInput.value : serviceSelector.value;
+            let numericAmount = parseFloat(baseValue) || 0;
             
-            const finalUsdt = parseFloat(amount || 0) + 16;
-            document.getElementById('finalPrice').innerText = finalUsdt > 16 ? finalUsdt.toFixed(2) + " USDT" : "0.00 USDT";
+            let totalUsdt = (numericAmount > 0) ? (numericAmount + 16) : 0;
+            
+            document.getElementById('finalPrice').innerText = totalUsdt.toFixed(2) + " USDT";
         }
-        updatePrice();
+        
+        window.onload = updatePrice;
     </script>
 </body>
 </html>
