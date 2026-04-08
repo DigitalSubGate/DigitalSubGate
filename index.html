@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigitalSubGate — Global Crypto Gateway</title>
     <style>
-        /* Глобальный сброс, чтобы ничего не вылезало за края */
         * { box-sizing: border-box; }
         
         body { background: #0f172a; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding: 20px; margin: 0; }
@@ -27,28 +26,28 @@
         .wallet-box { margin-top: 35px; text-align: left; }
         .info-label { font-size: 10px; color: #64748b; text-transform: uppercase; margin-bottom: 6px; display: block; font-weight: 700; letter-spacing: 1.2px; }
         
-        /* Уменьшили шрифт для длинных ID */
         .data-text { font-size: 10px; word-break: break-all; background: #0f172a; padding: 12px; border-radius: 12px; border: 1px dashed #334155; color: #38bdf8; font-family: 'Courier New', monospace; margin-bottom: 18px; line-height: 1.4; }
         
         .btn { 
-            display: block; 
-            width: 100%; 
-            background: #38bdf8; 
-            color: #0f172a; 
-            text-align: center; 
-            padding: 18px 10px; 
-            border-radius: 16px; 
-            text-decoration: none; 
-            font-weight: 800; 
-            margin-top: 20px; 
-            transition: 0.4s; 
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3); 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            border: none;
+            display: block; width: 100%; background: #38bdf8; color: #0f172a; text-align: center; 
+            padding: 18px 10px; border-radius: 16px; text-decoration: none; font-weight: 800; 
+            margin-top: 20px; transition: 0.4s; box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3); 
+            text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer;
         }
         .btn:hover { transform: translateY(-3px); background: #7dd3fc; box-shadow: 0 12px 25px rgba(56, 189, 248, 0.5); }
         
+        /* Исправленные стили для блока с софтом */
+        .free-tools {
+            margin-top: 25px; padding: 20px; background: rgba(56, 189, 248, 0.05); 
+            border: 1px solid #334155; border-radius: 20px; text-align: center;
+        }
+        .free-tools h3 { font-size: 14px; color: #38bdf8; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .tool-link {
+            display: inline-block; color: #34d399; text-decoration: none; font-size: 12px; 
+            font-weight: 700; border: 1px solid #34d399; padding: 8px 20px; border-radius: 10px; transition: 0.3s;
+        }
+        .tool-link:hover { background: #34d399; color: #0f172a; }
+
         .footer-note { font-size: 10px; color: #475569; margin-top: 25px; text-align: center; line-height: 1.6; font-style: italic; }
         b { color: #cbd5e1; }
     </style>
@@ -88,30 +87,27 @@
             <div class="data-text">DigitalSubGate@proton.me</div>
         </div>
         
-        <!-- Dual Action Buttons -->
-        <div style="display: flex; gap: 12px; margin-top: 25px; box-sizing: border-box; width: 100%;">
-            
-            <a href="https://discord.com" target="_blank" class="btn" style="flex: 1; margin-top: 0; background: #5865F2; color: white; font-size: 13px; padding: 15px 5px; text-decoration: none; border-radius: 12px; display: block; text-align: center; font-weight: 800;">
-                DISCORD
-            </a>
-            
-            <a href="mailto:DigitalSubGate@proton.me" class="btn" style="flex: 1; margin-top: 0; background: #38bdf8; color: #0f172a; font-size: 13px; padding: 15px 5px; text-decoration: none; border-radius: 12px; display: block; text-align: center; font-weight: 800;">
-                EMAIL
-            </a>
-            
+        <div style="display: flex; gap: 12px; margin-top: 25px;">
+            <a href="https://discord.com" target="_blank" class="btn" style="flex: 1; margin-top: 0; background: #5865F2; color: white; font-size: 12px; padding: 15px 0;">DISCORD</a>
+            <a href="mailto:DigitalSubGate@proton.me" class="btn" style="flex: 1; margin-top: 0; background: #38bdf8; color: #0f172a; font-size: 12px; padding: 15px 0;">EMAIL</a>
         </div>
 
-        <p style="font-size: 10px; color: #64748b; margin-top: 15px; text-align: center; line-height: 1.4; width: 100%;">
-            Or contact us via <b>Session ID</b> provided in the box above.<br>
-            All channels are secure and encrypted.
-        </p>
-
+        <!-- Блок с будильником теперь внутри карточки и оформлен -->
+        <div class="free-tools">
+            <h3>🎁 Free Software</h3>
+            <p style="font-size: 11px; color: #94a3b8; margin-bottom: 12px; line-height: 1.4;">
+                Try our <b>WinTick Alarm Clock</b> — Smart & Multi-language tool for PC.
+            </p>
+            <a href="https://github.com" target="_blank" class="tool-link">
+                VIEW ON GITHUB
+            </a>
+        </div>
 
         <div class="footer-note">
             * Transactions processed via <b>USDT BEP-20</b> protocol only.<br>
             Please provide transaction hash or screenshot after payment.
         </div>
-    
+    </div>
 
     <script>
         function updatePrice() {
