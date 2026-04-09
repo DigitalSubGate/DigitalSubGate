@@ -30,39 +30,41 @@
 
         .logo { font-weight: 900; color: #38bdf8; font-size: 24px; letter-spacing: -1px; text-decoration: none; flex-shrink: 0; }
 
-        .nav-actions { display: flex; gap: 10px; align-items: center; }
+        .nav-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+        .nav-actions { display: flex; gap: 8px; align-items: center; }
 
-        .lang-switcher { display: flex; gap: 6px; background: rgba(255,255,255,0.05); padding: 5px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-        .lang-flag { cursor: pointer; font-size: 16px; transition: 0.3s; opacity: 0.6; }
+        /* УЛУЧШЕННЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
+        .lang-switcher { display: flex; gap: 8px; background: rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .lang-flag { cursor: pointer; font-size: 16px; transition: 0.3s; opacity: 0.5; }
         .lang-flag:hover, .lang-flag.active { opacity: 1; transform: scale(1.2); }
 
-        .dropdown { position: relative; padding-bottom: 30px; margin-bottom: -30px; }
+        .dropdown { position: relative; padding-bottom: 25px; margin-bottom: -25px; }
         .nav-btn { 
             background: rgba(255, 255, 255, 0.05); color: white; border: 1px solid rgba(255, 255, 255, 0.2); 
-            padding: 8px 16px; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 12px; transition: 0.3s;
-            white-space: nowrap;
+            padding: 8px 14px; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 11px; transition: 0.3s;
+            white-space: nowrap; backdrop-filter: blur(5px);
         }
-        .nav-btn:hover { background: #38bdf8; color: #0f172a; }
+        .nav-btn:hover { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
 
         .dropdown-content {
-            display: none; position: absolute; right: 0; top: 40px;
-            background: rgba(15, 23, 42, 0.98); min-width: 320px; padding: 20px;
+            display: none; position: absolute; right: 0; top: 35px;
+            background: rgba(15, 23, 42, 0.98); min-width: 300px; padding: 20px;
             border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.4); backdrop-filter: blur(25px);
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* CONTACTS STYLES */
+        /* CONTACTS & WALLET */
         .wallet-card { background: rgba(52, 211, 153, 0.1); padding: 12px; border-radius: 15px; border: 1px solid rgba(52, 211, 153, 0.3); margin-bottom: 10px; }
         .copy-bar { background: rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
         .bar-label { font-size: 8px; color: #94a3b8; text-transform: uppercase; font-weight: 800; min-width: 55px; }
         .bar-value { font-family: monospace; font-size: 10px; color: #38bdf8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .mini-copy-btn { background: #34d399; color: #0f172a; border: none; padding: 5px 10px; border-radius: 6px; font-size: 9px; font-weight: 900; cursor: pointer; }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
-        .hero h1 { font-size: clamp(32px, 8vw, 80px); margin: 0; color: white; font-weight: 900; letter-spacing: -2px; line-height: 1; }
-        .hero p { font-size: clamp(14px, 2vw, 16px); color: #cbd5e1; max-width: 600px; margin-top: 15px; line-height: 1.4; padding: 0 10px; }
+        .hero h1 { font-size: clamp(32px, 8vw, 80px); margin: 0; color: white; font-weight: 900; letter-spacing: -2px; }
+        .hero p { font-size: clamp(14px, 2vw, 16px); color: #cbd5e1; max-width: 600px; margin-top: 15px; line-height: 1.4; }
 
         .gift-badge {
             margin-top: 25px; display: inline-flex; align-items: center; gap: 10px;
@@ -71,24 +73,24 @@
             color: #34d399; font-weight: 800; font-size: 13px; transition: 0.3s;
         }
 
-        /* PAY STYLES */
+        /* PAYMENT */
         select, input { width: 100%; padding: 12px; background: #0b121f; border: 1px solid #334155; color: white; border-radius: 10px; margin-bottom: 12px; outline: none; }
         .total-box { text-align: center; padding: 15px; background: rgba(56, 189, 248, 0.1); border-radius: 15px; border: 1px solid rgba(56, 189, 248, 0.2); }
 
-        /* MOBILE ADAPTATION */
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-            .logo { font-size: 18px; }
-            .lang-switcher { display: none; } /* Прячем флаги на совсем маленьких экранах для места */
-            .nav-btn { padding: 8px 12px; font-size: 11px; }
-            .dropdown-content { right: -10px; min-width: 280px; }
-            .hero h1 { font-size: 40px; }
-            .gift-badge { padding: 10px 20px; font-size: 11px; }
+            header { padding: 15px 20px; align-items: flex-start; }
+            .logo { font-size: 18px; margin-top: 5px; }
+            .nav-btn { padding: 6px 10px; font-size: 10px; }
+            .lang-flag { font-size: 14px; }
+            .dropdown-content { right: -10px; min-width: 270px; }
+            .hero h1 { font-size: 38px; }
         }
 
-        @media (max-width: 400px) {
-            .logo { display: none; } /* Если экран очень маленький, оставляем только кнопки */
-            header { justify-content: flex-end; }
+        @media (max-width: 480px) {
+            .logo { font-size: 15px; }
+            .nav-actions { gap: 5px; }
+            .lang-switcher { gap: 5px; padding: 3px 8px; }
         }
     </style>
 </head>
@@ -97,46 +99,49 @@
     <header>
         <a href="#" class="logo">DigitalSubGate</a>
 
-        <div class="nav-actions">
+        <div class="nav-right">
+            <!-- Флаги теперь в отдельной линии над или под кнопками для экономии места -->
             <div class="lang-switcher">
-                <span class="lang-flag active" onclick="setLang('en')" title="English">🇺🇸</span>
-                <span class="lang-flag" onclick="setLang('ru')" title="Русский">🇷🇺</span>
-                <span class="lang-flag" onclick="setLang('ge')" title="ქართული">🇬🇪</span>
+                <span class="lang-flag active" onclick="setLang('en', this)" title="English">🇺🇸</span>
+                <span class="lang-flag" onclick="setLang('ru', this)" title="Русский">🇷🇺</span>
+                <span class="lang-flag" onclick="setLang('ge', this)" title="ქართული">🇬🇪</span>
             </div>
 
-            <div class="dropdown">
-                <button class="nav-btn" id="btn-contacts">CONTACTS ▼</button>
-                <div class="dropdown-content">
-                    <div class="wallet-card">
-                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-                            <div style="width:18px; height:18px; background:#34d399; color:#0f172a; border-radius:50%; text-align:center; font-weight:900; font-size:10px;">₮</div>
-                            <span style="font-weight:800; font-size:12px;">USDT (BEP-20)</span>
+            <div class="nav-actions">
+                <div class="dropdown">
+                    <button class="nav-btn" id="btn-contacts">CONTACTS ▼</button>
+                    <div class="dropdown-content">
+                        <div class="wallet-card">
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                                <div style="width:18px; height:18px; background:#34d399; color:#0f172a; border-radius:50%; text-align:center; font-weight:900; font-size:10px;">₮</div>
+                                <span style="font-weight:800; font-size:12px;">USDT (BEP-20)</span>
+                            </div>
+                            <div class="copy-bar" style="margin-bottom:0; background:rgba(0,0,0,0.2);">
+                                <span class="bar-value">0xC888...4434</span>
+                                <button class="mini-copy-btn" onclick="copyTxt('0xC8880cF7eE8b1C35Cc08e67Bde17AbF70E554434', this)">COPY</button>
+                            </div>
                         </div>
-                        <div class="copy-bar" style="margin-bottom:0; background:rgba(0,0,0,0.2);">
-                            <span class="bar-value">0xC888...4434</span>
-                            <button class="mini-copy-btn" onclick="copyTxt('0xC8880cF7eE8b1C35Cc08e67Bde17AbF70E554434', this)">COPY</button>
-                        </div>
+                        <div class="copy-bar"><span class="bar-label" id="label-tiktok">TikTok</span><span class="bar-value">@digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('@digitalsubgate', this)">COPY</button></div>
+                        <div class="copy-bar"><span class="bar-label" id="label-discord">Discord</span><span class="bar-value">digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('digitalsubgate', this)">COPY</button></div>
+                        <div class="copy-bar"><span class="bar-label" id="label-email">Email</span><span class="bar-value">DigitalSubGate@proton.me</span><button class="mini-copy-btn" onclick="copyTxt('DigitalSubGate@proton.me', this)">COPY</button></div>
+                        <div class="copy-bar"><span class="bar-label" id="label-session">Session</span><span class="bar-value">059a07...884c14</span><button class="mini-copy-btn" onclick="copyTxt('059a0732cbb5c44df2ad7665c55ebaff0c80ea04f0d1f4a614ec466b7b6e884c14', this)">COPY</button></div>
                     </div>
-                    <div class="copy-bar"><span class="bar-label" id="label-tiktok">TikTok</span><span class="bar-value">@digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('@digitalsubgate', this)">COPY</button></div>
-                    <div class="copy-bar"><span class="bar-label" id="label-discord">Discord</span><span class="bar-value">digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('digitalsubgate', this)">COPY</button></div>
-                    <div class="copy-bar"><span class="bar-label" id="label-email">Email</span><span class="bar-value">DigitalSubGate@proton.me</span><button class="mini-copy-btn" onclick="copyTxt('DigitalSubGate@proton.me', this)">COPY</button></div>
-                    <div class="copy-bar"><span class="bar-label" id="label-session">Session</span><span class="bar-value">059a07...884c14</span><button class="mini-copy-btn" onclick="copyTxt('059a0732cbb5c44df2ad7665c55ebaff0c80ea04f0d1f4a614ec466b7b6e884c14', this)">COPY</button></div>
                 </div>
-            </div>
 
-            <div class="dropdown">
-                <button class="nav-btn" id="btn-pay" style="background:#38bdf8; color:#0f172a; border:none;">PAY ▼</button>
-                <div class="dropdown-content">
-                    <select id="service" onchange="updatePrice()">
-                        <option value="20" id="opt-chat">ChatGPT Plus ($20)</option>
-                        <option value="30" id="opt-mid">Midjourney ($30)</option>
-                        <option value="60" id="opt-adobe">Adobe Cloud ($60)</option>
-                        <option value="0" id="opt-custom">Custom Amount</option>
-                    </select>
-                    <input type="number" id="customAmount" placeholder="Enter USD" style="display:none;" oninput="updatePrice()">
-                    <div class="total-box">
-                        <div style="font-size: 24px; font-weight: 900; color: #34d399;"><span id="finalPrice">36.00</span> USDT</div>
-                        <div style="font-size: 9px; color: #38bdf8; margin-top: 5px;" id="text-network">BNB Chain (BEP-20)</div>
+                <div class="dropdown">
+                    <button class="nav-btn" id="btn-pay" style="background:#38bdf8; color:#0f172a; border:none;">PAY ▼</button>
+                    <div class="dropdown-content">
+                        <select id="service" onchange="updatePrice()">
+                            <option value="20" id="opt-chat">ChatGPT Plus ($20)</option>
+                            <option value="30" id="opt-mid">Midjourney ($30)</option>
+                            <option value="60" id="opt-adobe">Adobe Cloud ($60)</option>
+                            <option value="0" id="opt-custom">Custom Amount</option>
+                        </select>
+                        <input type="number" id="customAmount" placeholder="Enter USD" style="display:none;" oninput="updatePrice()">
+                        <div class="total-box">
+                            <div style="font-size: 24px; font-weight: 900; color: #34d399;"><span id="finalPrice">36.00</span> USDT</div>
+                            <div style="font-size: 9px; color: #38bdf8; margin-top: 5px;" id="text-network">BNB Chain (BEP-20)</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,7 +178,7 @@
             }
         };
 
-        function setLang(lang) {
+        function setLang(lang, el) {
             const t = translations[lang];
             document.getElementById('hero-title').innerText = t.title;
             document.getElementById('hero-desc').innerText = t.desc;
@@ -191,7 +196,7 @@
             document.getElementById('label-session').innerText = t.l_session;
             
             document.querySelectorAll('.lang-flag').forEach(f => f.classList.remove('active'));
-            event.target.classList.add('active');
+            el.classList.add('active');
         }
 
         function updatePrice() {
