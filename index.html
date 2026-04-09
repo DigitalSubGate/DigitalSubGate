@@ -8,100 +8,135 @@
         * { box-sizing: border-box; }
         
         body { 
-            /* Используйте ваше точное имя файла картинки */
+            /* ЗАМЕНИТЕ bg.jpg НА ВАШЕ ИМЯ ФАЙЛА */
             background: url('background.png') no-repeat center center fixed; 
             background-size: cover; 
             color: white; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh;
-            padding: 20px; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
             margin: 0; 
+            display: flex; 
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Убираем темную пелену, оставляем только легкий градиент снизу для глубины */
-        body::before {
-            content: "";
+        /* ШАПКА САЙТА (HEADER) */
+        header {
+            width: 100%;
+            padding: 15px 40px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.5));
-            z-index: -1;
+            top: 0; z-index: 100;
         }
-        
-        .card { 
-            /* Стеклянная прозрачность */
-            background: rgba(30, 41, 59, 0.7); 
-            backdrop-filter: blur(15px); /* Сильное размытие фона под карточкой */
-            -webkit-backdrop-filter: blur(15px);
-            padding: 25px; 
-            border-radius: 24px; 
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8); 
-            width: 100%; 
-            max-width: 380px; /* Чуть уже, чтобы видеть больше фона */
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-        }
-        
-        h2 { color: #38bdf8; text-align: center; margin: 0; font-weight: 800; font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .subtitle { font-size: 10px; color: #cbd5e1; text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; }
-        
-        label { display: block; margin: 15px 0 8px; font-size: 13px; color: #e2e8f0; font-weight: 600; }
-        
-        input, select { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15, 23, 42, 0.8); color: white; font-size: 14px; outline: none; }
-        
-        .result { margin-top: 20px; padding: 15px; background: rgba(56, 189, 248, 0.1); border-radius: 16px; text-align: center; border: 1px solid rgba(56, 189, 248, 0.2); }
-        .price { font-size: 32px; font-weight: 900; color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.4); }
-        
-        .wallet-box { margin-top: 25px; }
-        .data-text { font-size: 9px; background: rgba(15, 23, 42, 0.9); padding: 10px; border-radius: 10px; border: 1px dashed #38bdf8; color: #38bdf8; margin-bottom: 12px; }
-        
-        .btn { 
-            display: block; width: 100%; background: #38bdf8; color: #0f172a; text-align: center; 
-            padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 800; 
-            margin-top: 15px; font-size: 12px; transition: 0.3s;
-        }
-        .btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
-        
-        .free-tools { margin-top: 20px; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 16px; text-align: center; }
-        .tool-link { color: #34d399; text-decoration: none; font-size: 11px; font-weight: 700; border: 1px solid #34d399; padding: 6px 15px; border-radius: 8px; }
 
-        .footer-note { font-size: 9px; color: #94a3b8; margin-top: 15px; text-align: center; }
+        .logo { font-weight: 900; color: #38bdf8; letter-spacing: 1px; font-size: 20px; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+
+        /* Кошелек в шапке */
+        .wallet-top { font-size: 11px; color: #34d399; font-family: monospace; background: rgba(52, 211, 153, 0.1); padding: 5px 12px; border-radius: 8px; border: 1px solid rgba(52, 211, 153, 0.3); }
+
+        /* ВЫПАДАЮЩЕЕ МЕНЮ */
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn { background: none; border: 1px solid #38bdf8; color: #38bdf8; padding: 8px 20px; font-size: 13px; font-weight: 700; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+        .dropdown:hover .dropbtn { background: #38bdf8; color: #0f172a; }
+
+        .dropdown-content {
+            display: none; position: absolute; right: 0; background: rgba(30, 41, 59, 0.95);
+            min-width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); border-radius: 12px;
+            padding: 15px; border: 1px solid rgba(56, 189, 248, 0.2); backdrop-filter: blur(10px);
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .contact-item { margin-bottom: 10px; font-size: 11px; }
+        .contact-label { color: #94a3b8; text-transform: uppercase; font-size: 9px; display: block; margin-bottom: 3px; }
+        .contact-value { color: #38bdf8; word-break: break-all; font-family: monospace; }
+
+        /* ОСНОВНАЯ КАРТОЧКА */
+        .main-container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 100px 20px 40px; }
+
+        .card { 
+            background: rgba(15, 23, 42, 0.5); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 35px; border-radius: 30px; 
+            width: 100%; max-width: 380px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .price-display { margin: 25px 0; padding: 20px; background: rgba(56, 189, 248, 0.1); border-radius: 20px; }
+        .price { font-size: 42px; font-weight: 900; color: #34d399; }
+        
+        select, input { 
+            width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); 
+            background: rgba(15, 23, 42, 0.8); color: white; margin-top: 10px; outline: none;
+        }
+
+        .btn-discord { 
+            display: block; width: 100%; background: #5865F2; color: white; 
+            padding: 16px; border-radius: 14px; text-decoration: none; font-weight: 800; margin-top: 20px;
+        }
+
+        .footer-note { font-size: 10px; color: #94a3b8; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h2>DigitalSubGate</h2>
-        <div class="subtitle">Premium Digital Logistics 🌐</div>
-        
-        <label>Select Service:</label>
-        <select id="service" onchange="updatePrice()">
-            <option value="20">ChatGPT Plus Premium ($20)</option>
-            <option value="30">Midjourney Standard ($30)</option>
-            <option value="60">Adobe Creative Cloud ($60)</option>
-            <option value="15">PlayStation Plus Extra ($15)</option>
-            <option value="0">Manual Amount ($)</option>
-        </select>
-        
-        <input type="number" id="customAmount" placeholder="Enter amount" style="display:none; margin-top:10px;" oninput="updatePrice()">
 
-        <div class="result">
-            <div class="price" id="finalPrice">...</div>
+    <header>
+        <div class="logo">DigitalSubGate</div>
+        <div class="nav-links">
+            <div class="wallet-top">USDT BEP-20: 0xC888...4434</div>
+            <div class="dropdown">
+                <button class="dropbtn">CONTACTS ▼</button>
+                <div class="dropdown-content">
+                    <div class="contact-item">
+                        <span class="contact-label">Discord</span>
+                        <span class="contact-value">digitalsubgate</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Session ID</span>
+                        <span class="contact-value">059a0732cbb5c44df2ad7665c55ebaff0c80ea04f0d1f4a614ec466b7b6e884c14</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">DigitalSubGate@proton.me</span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </header>
 
-        <div class="wallet-box">
-            <div class="data-text">0xC8880cF7eE8b1C35Cc08e67Bde17AbF70E554434</div>
-            <div class="data-text">digitalsubgate (Discord)</div>
+    <div class="main-container">
+        <div class="card">
+            <h1 style="font-size: 24px; margin: 0; color: #38bdf8;">Payment Gateway</h1>
+            <p style="font-size: 12px; color: #94a3b8;">Fast & Secure Crypto Subscriptions</p>
+            
+            <select id="service" onchange="updatePrice()">
+                <option value="20">ChatGPT Plus ($20)</option>
+                <option value="30">Midjourney ($30)</option>
+                <option value="60">Adobe Cloud ($60)</option>
+                <option value="15">PS Plus Extra ($15)</option>
+                <option value="0">Custom Amount</option>
+            </select>
+            
+            <input type="number" id="customAmount" placeholder="Enter USD" style="display:none;" oninput="updatePrice()">
+
+            <div class="price-display">
+                <div style="font-size: 10px; color: #38bdf8; text-transform: uppercase;">Total Amount</div>
+                <div class="price" id="finalPrice">0.00 USDT</div>
+            </div>
+
+            <a href="https://discord.com" target="_blank" class="btn-discord">OPEN DISCORD SUPPORT</a>
+
+            <div class="footer-note">
+                Your payment includes automated logistics fee.
+            </div>
         </div>
-        
-        <a href="https://discord.com" target="_blank" class="btn">OPEN DISCORD</a>
-
-        <div class="free-tools">
-            <p style="font-size: 10px; margin-bottom: 10px;">WinTick Alarm Clock Project</p>
-            <a href="https://github.com" target="_blank" class="tool-link">GITHUB</a>
-        </div>
-
-        <div class="footer-note">* USDT BEP-20 only</div>
     </div>
 
     <script>
@@ -110,7 +145,8 @@
             const c = document.getElementById('customAmount');
             c.style.display = (s.value === "0") ? "block" : "none";
             let val = (s.value === "0") ? c.value : s.value;
-            let res = (parseFloat(val) || 0) + (parseFloat(val) > 0 ? 16 : 0);
+            let res = (parseFloat(val) || 0);
+            if (res > 0) res += 16;
             document.getElementById('finalPrice').innerText = res.toFixed(2) + " USDT";
         }
         window.onload = updatePrice;
