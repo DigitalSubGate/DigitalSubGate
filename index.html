@@ -19,7 +19,7 @@
 
         header {
             width: 100%;
-            padding: 20px 40px;
+            padding: 15px 40px;
             background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), transparent);
             display: flex;
             justify-content: space-between;
@@ -33,9 +33,9 @@
         .nav-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
         .nav-actions { display: flex; gap: 8px; align-items: center; }
 
-        /* УЛУЧШЕННЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
-        .lang-switcher { display: flex; gap: 8px; background: rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-        .lang-flag { cursor: pointer; font-size: 16px; transition: 0.3s; opacity: 0.5; }
+        /* СПИСОК ИЗ 7 ЯЗЫКОВ */
+        .lang-switcher { display: flex; gap: 6px; background: rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; justify-content: flex-end; }
+        .lang-flag { cursor: pointer; font-size: 15px; transition: 0.3s; opacity: 0.5; }
         .lang-flag:hover, .lang-flag.active { opacity: 1; transform: scale(1.2); }
 
         .dropdown { position: relative; padding-bottom: 25px; margin-bottom: -25px; }
@@ -44,27 +44,27 @@
             padding: 8px 14px; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 11px; transition: 0.3s;
             white-space: nowrap; backdrop-filter: blur(5px);
         }
-        .nav-btn:hover { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
+        .nav-btn:hover { background: #38bdf8; color: #0f172a; }
 
         .dropdown-content {
             display: none; position: absolute; right: 0; top: 35px;
-            background: rgba(15, 23, 42, 0.98); min-width: 300px; padding: 20px;
+            background: rgba(15, 23, 42, 0.98); min-width: 310px; padding: 20px;
             border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.4); backdrop-filter: blur(25px);
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* CONTACTS & WALLET */
+        /* ПАНЕЛИ КОНТАКТОВ */
         .wallet-card { background: rgba(52, 211, 153, 0.1); padding: 12px; border-radius: 15px; border: 1px solid rgba(52, 211, 153, 0.3); margin-bottom: 10px; }
         .copy-bar { background: rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
         .bar-label { font-size: 8px; color: #94a3b8; text-transform: uppercase; font-weight: 800; min-width: 55px; }
         .bar-value { font-family: monospace; font-size: 10px; color: #38bdf8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .mini-copy-btn { background: #34d399; color: #0f172a; border: none; padding: 5px 10px; border-radius: 6px; font-size: 9px; font-weight: 900; cursor: pointer; }
 
-        /* HERO */
+        /* ЦЕНТРАЛЬНЫЙ ТЕКСТ */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
-        .hero h1 { font-size: clamp(32px, 8vw, 80px); margin: 0; color: white; font-weight: 900; letter-spacing: -2px; }
-        .hero p { font-size: clamp(14px, 2vw, 16px); color: #cbd5e1; max-width: 600px; margin-top: 15px; line-height: 1.4; }
+        .hero h1 { font-size: clamp(30px, 8vw, 80px); margin: 0; color: white; font-weight: 900; letter-spacing: -2px; }
+        .hero p { font-size: clamp(13px, 2vw, 16px); color: #cbd5e1; max-width: 700px; margin-top: 15px; line-height: 1.4; }
 
         .gift-badge {
             margin-top: 25px; display: inline-flex; align-items: center; gap: 10px;
@@ -73,24 +73,18 @@
             color: #34d399; font-weight: 800; font-size: 13px; transition: 0.3s;
         }
 
-        /* PAYMENT */
+        /* ОПЛАТА */
         select, input { width: 100%; padding: 12px; background: #0b121f; border: 1px solid #334155; color: white; border-radius: 10px; margin-bottom: 12px; outline: none; }
         .total-box { text-align: center; padding: 15px; background: rgba(56, 189, 248, 0.1); border-radius: 15px; border: 1px solid rgba(56, 189, 248, 0.2); }
 
-        /* MOBILE OPTIMIZATION */
+        /* МОБИЛЬНЫЙ ВИД */
         @media (max-width: 768px) {
             header { padding: 15px 20px; align-items: flex-start; }
             .logo { font-size: 18px; margin-top: 5px; }
             .nav-btn { padding: 6px 10px; font-size: 10px; }
-            .lang-flag { font-size: 14px; }
-            .dropdown-content { right: -10px; min-width: 270px; }
-            .hero h1 { font-size: 38px; }
-        }
-
-        @media (max-width: 480px) {
-            .logo { font-size: 15px; }
-            .nav-actions { gap: 5px; }
-            .lang-switcher { gap: 5px; padding: 3px 8px; }
+            .lang-switcher { max-width: 150px; gap: 4px; }
+            .dropdown-content { right: -10px; min-width: 275px; }
+            .hero h1 { font-size: 34px; }
         }
     </style>
 </head>
@@ -100,11 +94,14 @@
         <a href="#" class="logo">DigitalSubGate</a>
 
         <div class="nav-right">
-            <!-- Флаги теперь в отдельной линии над или под кнопками для экономии места -->
             <div class="lang-switcher">
                 <span class="lang-flag active" onclick="setLang('en', this)" title="English">🇺🇸</span>
                 <span class="lang-flag" onclick="setLang('ru', this)" title="Русский">🇷🇺</span>
                 <span class="lang-flag" onclick="setLang('ge', this)" title="ქართული">🇬🇪</span>
+                <span class="lang-flag" onclick="setLang('de', this)" title="Deutsch">🇩🇪</span>
+                <span class="lang-flag" onclick="setLang('es', this)" title="Español">🇪🇸</span>
+                <span class="lang-flag" onclick="setLang('fr', this)" title="Français">🇫🇷</span>
+                <span class="lang-flag" onclick="setLang('zh', this)" title="中文">🇨🇳</span>
             </div>
 
             <div class="nav-actions">
@@ -140,7 +137,7 @@
                         <input type="number" id="customAmount" placeholder="Enter USD" style="display:none;" oninput="updatePrice()">
                         <div class="total-box">
                             <div style="font-size: 24px; font-weight: 900; color: #34d399;"><span id="finalPrice">36.00</span> USDT</div>
-                            <div style="font-size: 9px; color: #38bdf8; margin-top: 5px;" id="text-network">BNB Chain (BEP-20)</div>
+                            <div style="font-size: 9px; color: #38bdf8; margin-top: 5px;" id="text-network">Network: BEP-20</div>
                         </div>
                     </div>
                 </div>
@@ -175,6 +172,30 @@
                 contacts: "კონტაქტები ▼", pay: "გადახდა ▼", network: "ქსელი: BEP-20",
                 chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "სხვა თანხა",
                 l_tiktok: "TikTok", l_discord: "Discord", l_email: "იმეილი", l_session: "სესია"
+            },
+            de: {
+                title: "Digitales Tor", desc: "Premium-Abonnement-Logistik und Automatisierungstools.", gift: "🎁 GESCHENK: WinTick",
+                contacts: "KONTAKTE ▼", pay: "BEZAHLEN ▼", network: "Netzwerk: BEP-20",
+                chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "Betrag",
+                l_tiktok: "TikTok", l_discord: "Discord", l_email: "E-Mail", l_session: "Session"
+            },
+            es: {
+                title: "Puerta Digital", desc: "Logística digital premium. Servicios globales y herramientas inteligentes.", gift: "🎁 REGALO: WinTick",
+                contacts: "CONTACTOS ▼", pay: "PAGAR ▼", network: "Red: BEP-20",
+                chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "Monto",
+                l_tiktok: "TikTok", l_discord: "Discord", l_email: "Correo", l_session: "Session"
+            },
+            fr: {
+                title: "Porte Digitale", desc: "Logistique numérique premium. Services mondiaux et outils intelligents.", gift: "🎁 CADEAU: WinTick",
+                contacts: "CONTACTS ▼", pay: "PAYER ▼", network: "Réseau: BEP-20",
+                chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "Montant",
+                l_tiktok: "TikTok", l_discord: "Discord", l_email: "Email", l_session: "Session"
+            },
+            zh: {
+                title: "数字网关", desc: "优质数字物流和智能自动化工具。", gift: "🎁 免费礼品: WinTick",
+                contacts: "联系方式 ▼", pay: "快速支付 ▼", network: "网络: BEP-20",
+                chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "金额",
+                l_tiktok: "抖音", l_discord: "Discord", l_email: "邮件", l_session: "Session"
             }
         };
 
