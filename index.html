@@ -19,7 +19,7 @@
 
         header {
             width: 100%;
-            padding: 20px 60px;
+            padding: 20px 40px;
             background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), transparent);
             display: flex;
             justify-content: space-between;
@@ -28,74 +28,49 @@
             top: 0; z-index: 1000;
         }
 
-        .logo { font-weight: 900; color: #38bdf8; font-size: 28px; letter-spacing: -1px; text-decoration: none; }
+        .logo { font-weight: 900; color: #38bdf8; font-size: 24px; letter-spacing: -1px; text-decoration: none; }
 
-        .nav-actions { display: flex; gap: 15px; align-items: center; }
+        .nav-actions { display: flex; gap: 12px; align-items: center; }
 
-        /* ИСПРАВЛЕНИЕ БАГА: УВЕЛИЧЕННЫЙ МОСТИК */
-        .dropdown { 
-            position: relative; 
-            padding-bottom: 30px; 
-            margin-bottom: -30px; 
-        }
+        /* ЯЗЫКОВОЙ ПЕРЕКЛЮЧАТЕЛЬ */
+        .lang-switcher { display: flex; gap: 8px; background: rgba(255,255,255,0.05); padding: 5px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .lang-flag { cursor: pointer; font-size: 18px; transition: 0.3s; opacity: 0.6; }
+        .lang-flag:hover, .lang-flag.active { opacity: 1; transform: scale(1.2); }
 
+        .dropdown { position: relative; padding-bottom: 35px; margin-bottom: -35px; }
         .nav-btn { 
             background: rgba(255, 255, 255, 0.05); color: white; border: 1px solid rgba(255, 255, 255, 0.2); 
-            padding: 10px 22px; border-radius: 30px; font-weight: 600; 
-            cursor: pointer; font-size: 13px; transition: 0.3s;
-            backdrop-filter: blur(5px);
+            padding: 8px 18px; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 12px; transition: 0.3s;
         }
-        .nav-btn:hover { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
+        .nav-btn:hover { background: #38bdf8; color: #0f172a; }
 
         .dropdown-content {
-            display: none; position: absolute; right: 0; 
-            top: 40px; /* Плотно прилегает */
-            background: rgba(15, 23, 42, 0.98); min-width: 340px; padding: 25px;
-            border-radius: 24px; border: 1px solid rgba(56, 189, 248, 0.4); backdrop-filter: blur(25px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+            display: none; position: absolute; right: 0; top: 40px;
+            background: rgba(15, 23, 42, 0.98); min-width: 320px; padding: 20px;
+            border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.4); backdrop-filter: blur(25px);
         }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* КОШЕЛЕК */
-        .wallet-card {
-            background: rgba(52, 211, 153, 0.1); padding: 15px; border-radius: 18px;
-            border: 1px solid rgba(52, 211, 153, 0.3); margin-bottom: 12px;
-        }
-        .wallet-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-        .usdt-icon { width: 22px; height: 22px; background: #34d399; color: #0f172a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 12px; }
-        .network-badge { font-size: 9px; background: #34d399; color: #0f172a; padding: 2px 6px; border-radius: 4px; font-weight: 900; margin-left: auto; }
+        .wallet-card { background: rgba(52, 211, 153, 0.1); padding: 12px; border-radius: 15px; border: 1px solid rgba(52, 211, 153, 0.3); margin-bottom: 10px; }
+        .copy-bar { background: rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+        .bar-label { font-size: 8px; color: #94a3b8; text-transform: uppercase; font-weight: 800; }
+        .bar-value { font-family: monospace; font-size: 10px; color: #38bdf8; }
+        .mini-copy-btn { background: #34d399; color: #0f172a; border: none; padding: 5px 10px; border-radius: 6px; font-size: 9px; font-weight: 900; cursor: pointer; }
 
-        /* ПЛАШКИ КОНТАКТОВ */
-        .copy-bar {
-            background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05); display: flex; 
-            align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px;
-        }
-        .bar-label { font-size: 9px; color: #94a3b8; text-transform: uppercase; font-weight: 800; min-width: 55px; }
-        .bar-value { font-family: monospace; font-size: 11px; color: #38bdf8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .mini-copy-btn { background: #34d399; color: #0f172a; border: none; padding: 6px 12px; border-radius: 8px; font-size: 10px; font-weight: 900; cursor: pointer; }
-
-        /* ГЕРОЙ-БЛОК */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-size: clamp(50px, 10vw, 90px); margin: 0; color: white; font-weight: 900; letter-spacing: -3px; }
-        .hero p { font-size: 18px; color: #cbd5e1; max-width: 600px; margin-top: 10px; }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .hero h1 { font-size: clamp(40px, 8vw, 80px); margin: 0; color: white; font-weight: 900; letter-spacing: -2px; }
+        .hero p { font-size: 16px; color: #cbd5e1; max-width: 700px; margin-top: 15px; line-height: 1.5; }
 
         .gift-badge {
-            margin-top: 30px; display: inline-flex; align-items: center; gap: 10px;
+            margin-top: 25px; display: inline-flex; align-items: center; gap: 10px;
             background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.4);
-            padding: 15px 35px; border-radius: 50px; text-decoration: none;
-            color: #34d399; font-weight: 800; font-size: 16px; transition: 0.3s;
+            padding: 12px 30px; border-radius: 50px; text-decoration: none;
+            color: #34d399; font-weight: 800; font-size: 14px; transition: 0.3s;
         }
-        .gift-badge:hover { background: #34d399; color: #0f172a; transform: scale(1.05); }
+        .gift-badge:hover { background: #34d399; color: #0f172a; transform: translateY(-3px); }
 
-        .music-control {
-            position: fixed; bottom: 40px; right: 40px;
-            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 24px; border-radius: 30px; cursor: pointer; backdrop-filter: blur(10px); z-index: 1000;
-        }
-
-        select, input { width: 100%; padding: 14px; background: #0b121f; border: 1px solid #334155; color: white; border-radius: 12px; margin-bottom: 15px; outline: none; }
-        .total-box { text-align: center; padding: 20px; background: rgba(56, 189, 248, 0.1); border-radius: 18px; border: 1px solid rgba(56, 189, 248, 0.2); }
+        select, input { width: 100%; padding: 12px; background: #0b121f; border: 1px solid #334155; color: white; border-radius: 10px; margin-bottom: 12px; outline: none; }
+        .total-box { text-align: center; padding: 15px; background: rgba(56, 189, 248, 0.1); border-radius: 15px; border: 1px solid rgba(56, 189, 248, 0.2); }
     </style>
 </head>
 <body>
@@ -104,62 +79,47 @@
         <a href="#" class="logo">DigitalSubGate</a>
 
         <div class="nav-actions">
+            <!-- LANGUAGE SWITCHER -->
+            <div class="lang-switcher">
+                <span class="lang-flag" onclick="setLang('en')" title="English">🇺🇸</span>
+                <span class="lang-flag" onclick="setLang('ru')" title="Русский">🇷🇺</span>
+                <span class="lang-flag" onclick="setLang('ge')" title="ქართული">🇬🇪</span>
+                <span class="lang-flag" onclick="setLang('de')" title="Deutsch">🇩🇪</span>
+                <span class="lang-flag" onclick="setLang('zh')" title="中文">🇨🇳</span>
+            </div>
+
             <div class="dropdown">
-                <button class="nav-btn">CONTACTS ▼</button>
+                <button class="nav-btn" id="btn-contacts">CONTACTS ▼</button>
                 <div class="dropdown-content">
-                    <!-- Кошелек -->
                     <div class="wallet-card">
-                        <div class="wallet-header">
-                            <div class="usdt-icon">₮</div>
-                            <span style="font-weight: 800; font-size: 13px;">Tether USDT</span>
-                            <span class="network-badge">BEP-20</span>
+                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                            <div style="width:18px; height:18px; background:#34d399; color:#0f172a; border-radius:50%; text-align:center; font-weight:900; font-size:10px;">₮</div>
+                            <span style="font-weight:800; font-size:12px;">USDT (BEP-20)</span>
                         </div>
-                        <div class="copy-bar" style="background: rgba(0,0,0,0.3); margin-bottom: 0;">
+                        <div class="copy-bar" style="margin-bottom:0; background:rgba(0,0,0,0.2);">
                             <span class="bar-value">0xC888...4434</span>
                             <button class="mini-copy-btn" onclick="copyTxt('0xC8880cF7eE8b1C35Cc08e67Bde17AbF70E554434', this)">COPY</button>
                         </div>
                     </div>
-
-                    <!-- TikTok -->
-                    <div class="copy-bar">
-                        <span class="bar-label">TikTok</span>
-                        <span class="bar-value">@digitalsubgate</span>
-                        <button class="mini-copy-btn" onclick="copyTxt('@digitalsubgate', this)">COPY</button>
-                    </div>
-                    <!-- Discord -->
-                    <div class="copy-bar">
-                        <span class="bar-label">Discord</span>
-                        <span class="bar-value">digitalsubgate</span>
-                        <button class="mini-copy-btn" onclick="copyTxt('digitalsubgate', this)">COPY</button>
-                    </div>
-                    <!-- Email -->
-                    <div class="copy-bar">
-                        <span class="bar-label">Email</span>
-                        <span class="bar-value">DigitalSubGate@proton.me</span>
-                        <button class="mini-copy-btn" onclick="copyTxt('DigitalSubGate@proton.me', this)">COPY</button>
-                    </div>
-                    <!-- Session -->
-                    <div class="copy-bar" style="margin-bottom: 0;">
-                        <span class="bar-label">Session</span>
-                        <span class="bar-value">059a07...884c14</span>
-                        <button class="mini-copy-btn" onclick="copyTxt('059a0732cbb5c44df2ad7665c55ebaff0c80ea04f0d1f4a614ec466b7b6e884c14', this)">COPY</button>
-                    </div>
+                    <div class="copy-bar"><span class="bar-label">TikTok</span><span class="bar-value">@digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('@digitalsubgate', this)">COPY</button></div>
+                    <div class="copy-bar"><span class="bar-label">Discord</span><span class="bar-value">digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('digitalsubgate', this)">COPY</button></div>
+                    <div class="copy-bar"><span class="bar-label">Email</span><span class="bar-value">DigitalSubGate@proton.me</span><button class="mini-copy-btn" onclick="copyTxt('DigitalSubGate@proton.me', this)">COPY</button></div>
                 </div>
             </div>
 
             <div class="dropdown">
-                <button class="nav-btn" style="background: #38bdf8; color: #0f172a; border: none;">QUICK PAY ▼</button>
+                <button class="nav-btn" id="btn-pay" style="background:#38bdf8; color:#0f172a; border:none;">QUICK PAY ▼</button>
                 <div class="dropdown-content">
                     <select id="service" onchange="updatePrice()">
-                        <option value="20">ChatGPT Plus ($20)</option>
-                        <option value="30">Midjourney ($30)</option>
-                        <option value="60">Adobe Cloud ($60)</option>
-                        <option value="0">Custom Amount</option>
+                        <option value="20" id="opt-chat">ChatGPT Plus ($20)</option>
+                        <option value="30" id="opt-mid">Midjourney ($30)</option>
+                        <option value="60" id="opt-adobe">Adobe Cloud ($60)</option>
+                        <option value="0" id="opt-custom">Custom Amount</option>
                     </select>
                     <input type="number" id="customAmount" placeholder="Enter USD" style="display:none;" oninput="updatePrice()">
                     <div class="total-box">
-                        <div style="font-size: 32px; font-weight: 900; color: #34d399;"><span id="finalPrice">36.00</span> USDT</div>
-                        <div style="font-size: 9px; color: #38bdf8; margin-top: 5px;">BNB Chain (BEP-20)</div>
+                        <div style="font-size: 28px; font-weight: 900; color: #34d399;"><span id="finalPrice">36.00</span> USDT</div>
+                        <div style="font-size: 9px; color: #38bdf8; margin-top: 5px;" id="text-network">Network: BNB Chain (BEP-20)</div>
                     </div>
                 </div>
             </div>
@@ -167,22 +127,94 @@
     </header>
 
     <div class="hero">
-        <h1>Digital Gate</h1>
-        <p>Premium digital logistics. Secure gateway to global services.</p>
-        <a href="https://github.com/DigitalSubGate/WinTick_Project" target="_blank" class="gift-badge">
-            🎁 GET FREE GIFT: WinTick
+        <h1 id="hero-title">Digital Gate</h1>
+        <p id="hero-desc">Premium digital logistics. Secure gateway to global services and smart automation tools.</p>
+        <a href="https://github.com/DigitalSubGate/WinTick_Project" target="_blank" class="gift-badge" id="gift-text">
+            🎁 FREE GIFT: WinTick Project
         </a>
     </div>
 
-    <div class="music-control" onclick="toggleMusic()">
-        <span id="musicStatus" style="font-weight: 800; font-size: 12px; color: #38bdf8;">🔊 PLAY AMBIENT</span>
-    </div>
-
-    <audio id="bgMusic" loop>
-        <source src="https://soundhelix.com" type="audio/mpeg">
-    </audio>
-
     <script>
+        const translations = {
+            en: {
+                title: "Digital Gate",
+                desc: "Premium digital logistics. Secure gateway to global services and smart automation tools.",
+                gift: "🎁 FREE GIFT: WinTick Project",
+                contacts: "CONTACTS ▼",
+                pay: "QUICK PAY ▼",
+                network: "Network: BNB Chain (BEP-20)",
+                chat: "ChatGPT Plus ($20)",
+                mid: "Midjourney ($30)",
+                adobe: "Adobe Cloud ($60)",
+                custom: "Custom Amount"
+            },
+            ru: {
+                title: "Цифровой Шлюз",
+                desc: "Премиальная логистика подписок. Безопасный доступ к мировым сервисам и инструментам автоматизации.",
+                gift: "🎁 ПОДАРОК: Проект WinTick",
+                contacts: "КОНТАКТЫ ▼",
+                pay: "ОПЛАТИТЬ ▼",
+                network: "Сеть: BNB Chain (BEP-20)",
+                chat: "ChatGPT Plus ($20)",
+                mid: "Midjourney ($30)",
+                adobe: "Adobe Cloud ($60)",
+                custom: "Своя сумма"
+            },
+            ge: {
+                title: "ციფრული კარიბჭე",
+                desc: "პრემიუმ ციფრული ლოგისტიკა. გლობალური სერვისებისა და ჭკვიანი ავტომატიზაციის ხელსაწყოების უსაფრთხო წვდომა.",
+                gift: "🎁 საჩუქარი: WinTick პროექტი",
+                contacts: "კონტაქტები ▼",
+                pay: "გადახდა ▼",
+                network: "ქსელი: BNB Chain (BEP-20)",
+                chat: "ChatGPT Plus ($20)",
+                mid: "Midjourney ($30)",
+                adobe: "Adobe Cloud ($60)",
+                custom: "სხვა თანხა"
+            },
+            de: {
+                title: "Digitales Tor",
+                desc: "Premium-Logistik für Abonnements. Sicherer Zugang zu globalen Diensten und Automatisierungstools.",
+                gift: "🎁 GESCHENK: WinTick Projekt",
+                contacts: "KONTAKTE ▼",
+                pay: "BEZAHLEN ▼",
+                network: "Netzwerk: BNB Chain (BEP-20)",
+                chat: "ChatGPT Plus ($20)",
+                mid: "Midjourney ($30)",
+                adobe: "Adobe Cloud ($60)",
+                custom: "Eigener Betrag"
+            },
+            zh: {
+                title: "数字网关",
+                desc: "优质数字物流。全球服务和智能自动化工具的安全门户。",
+                gift: "🎁 免费礼品: WinTick 项目",
+                contacts: "联系方式 ▼",
+                pay: "快速支付 ▼",
+                network: "网络: BNB Chain (BEP-20)",
+                chat: "ChatGPT Plus ($20)",
+                mid: "Midjourney ($30)",
+                adobe: "Adobe Cloud ($60)",
+                custom: "自定义金额"
+            }
+        };
+
+        function setLang(lang) {
+            const t = translations[lang];
+            document.getElementById('hero-title').innerText = t.title;
+            document.getElementById('hero-desc').innerText = t.desc;
+            document.getElementById('gift-text').innerText = t.gift;
+            document.getElementById('btn-contacts').innerText = t.contacts;
+            document.getElementById('btn-pay').innerText = t.pay;
+            document.getElementById('text-network').innerText = t.network;
+            document.getElementById('opt-chat').innerText = t.chat;
+            document.getElementById('opt-mid').innerText = t.mid;
+            document.getElementById('opt-adobe').innerText = t.adobe;
+            document.getElementById('opt-custom').innerText = t.custom;
+            
+            document.querySelectorAll('.lang-flag').forEach(f => f.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
         function updatePrice() {
             const s = document.getElementById('service');
             const c = document.getElementById('customAmount');
@@ -200,17 +232,6 @@
             setTimeout(() => { btn.innerText = old; }, 1500);
         }
 
-        function toggleMusic() {
-            const audio = document.getElementById('bgMusic');
-            const status = document.getElementById('musicStatus');
-            if (audio.paused) {
-                audio.play().catch(e => console.log("Music blocked by browser"));
-                status.innerText = "⏸ STOP MUSIC";
-            } else {
-                audio.pause();
-                status.innerText = "🔊 PLAY AMBIENT";
-            }
-        }
         window.onload = updatePrice;
     </script>
 </body>
