@@ -32,7 +32,7 @@
 
         .nav-actions { display: flex; gap: 12px; align-items: center; }
 
-        /* ЯЗЫКОВОЙ ПЕРЕКЛЮЧАТЕЛЬ */
+        /* LANGUAGE SWITCHER */
         .lang-switcher { display: flex; gap: 8px; background: rgba(255,255,255,0.05); padding: 5px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
         .lang-flag { cursor: pointer; font-size: 18px; transition: 0.3s; opacity: 0.6; }
         .lang-flag:hover, .lang-flag.active { opacity: 1; transform: scale(1.2); }
@@ -46,15 +46,15 @@
 
         .dropdown-content {
             display: none; position: absolute; right: 0; top: 40px;
-            background: rgba(15, 23, 42, 0.98); min-width: 320px; padding: 20px;
+            background: rgba(15, 23, 42, 0.98); min-width: 340px; padding: 20px;
             border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.4); backdrop-filter: blur(25px);
         }
         .dropdown:hover .dropdown-content { display: block; }
 
         .wallet-card { background: rgba(52, 211, 153, 0.1); padding: 12px; border-radius: 15px; border: 1px solid rgba(52, 211, 153, 0.3); margin-bottom: 10px; }
         .copy-bar { background: rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-        .bar-label { font-size: 8px; color: #94a3b8; text-transform: uppercase; font-weight: 800; }
-        .bar-value { font-family: monospace; font-size: 10px; color: #38bdf8; }
+        .bar-label { font-size: 8px; color: #94a3b8; text-transform: uppercase; font-weight: 800; min-width: 55px; }
+        .bar-value { font-family: monospace; font-size: 10px; color: #38bdf8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .mini-copy-btn { background: #34d399; color: #0f172a; border: none; padding: 5px 10px; border-radius: 6px; font-size: 9px; font-weight: 900; cursor: pointer; }
 
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
@@ -79,9 +79,8 @@
         <a href="#" class="logo">DigitalSubGate</a>
 
         <div class="nav-actions">
-            <!-- LANGUAGE SWITCHER -->
             <div class="lang-switcher">
-                <span class="lang-flag" onclick="setLang('en')" title="English">🇺🇸</span>
+                <span class="lang-flag active" onclick="setLang('en')" title="English">🇺🇸</span>
                 <span class="lang-flag" onclick="setLang('ru')" title="Русский">🇷🇺</span>
                 <span class="lang-flag" onclick="setLang('ge')" title="ქართული">🇬🇪</span>
                 <span class="lang-flag" onclick="setLang('de')" title="Deutsch">🇩🇪</span>
@@ -101,9 +100,10 @@
                             <button class="mini-copy-btn" onclick="copyTxt('0xC8880cF7eE8b1C35Cc08e67Bde17AbF70E554434', this)">COPY</button>
                         </div>
                     </div>
-                    <div class="copy-bar"><span class="bar-label">TikTok</span><span class="bar-value">@digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('@digitalsubgate', this)">COPY</button></div>
-                    <div class="copy-bar"><span class="bar-label">Discord</span><span class="bar-value">digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('digitalsubgate', this)">COPY</button></div>
-                    <div class="copy-bar"><span class="bar-label">Email</span><span class="bar-value">DigitalSubGate@proton.me</span><button class="mini-copy-btn" onclick="copyTxt('DigitalSubGate@proton.me', this)">COPY</button></div>
+                    <div class="copy-bar"><span class="bar-label" id="label-tiktok">TikTok</span><span class="bar-value">@digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('@digitalsubgate', this)">COPY</button></div>
+                    <div class="copy-bar"><span class="bar-label" id="label-discord">Discord</span><span class="bar-value">digitalsubgate</span><button class="mini-copy-btn" onclick="copyTxt('digitalsubgate', this)">COPY</button></div>
+                    <div class="copy-bar"><span class="bar-label" id="label-email">Email</span><span class="bar-value">DigitalSubGate@proton.me</span><button class="mini-copy-btn" onclick="copyTxt('DigitalSubGate@proton.me', this)">COPY</button></div>
+                    <div class="copy-bar"><span class="bar-label" id="label-session">Session</span><span class="bar-value">059a07...884c14</span><button class="mini-copy-btn" onclick="copyTxt('059a0732cbb5c44df2ad7665c55ebaff0c80ea04f0d1f4a614ec466b7b6e884c14', this)">COPY</button></div>
                 </div>
             </div>
 
@@ -143,10 +143,8 @@
                 contacts: "CONTACTS ▼",
                 pay: "QUICK PAY ▼",
                 network: "Network: BNB Chain (BEP-20)",
-                chat: "ChatGPT Plus ($20)",
-                mid: "Midjourney ($30)",
-                adobe: "Adobe Cloud ($60)",
-                custom: "Custom Amount"
+                chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "Custom Amount",
+                l_tiktok: "TikTok", l_discord: "Discord", l_email: "Email", l_session: "Session"
             },
             ru: {
                 title: "Цифровой Шлюз",
@@ -155,10 +153,8 @@
                 contacts: "КОНТАКТЫ ▼",
                 pay: "ОПЛАТИТЬ ▼",
                 network: "Сеть: BNB Chain (BEP-20)",
-                chat: "ChatGPT Plus ($20)",
-                mid: "Midjourney ($30)",
-                adobe: "Adobe Cloud ($60)",
-                custom: "Своя сумма"
+                chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "Своя сумма",
+                l_tiktok: "ТикТок", l_discord: "Дискорд", l_email: "Почта", l_session: "Сессия"
             },
             ge: {
                 title: "ციფრული კარიბჭე",
@@ -167,10 +163,8 @@
                 contacts: "კონტაქტები ▼",
                 pay: "გადახდა ▼",
                 network: "ქსელი: BNB Chain (BEP-20)",
-                chat: "ChatGPT Plus ($20)",
-                mid: "Midjourney ($30)",
-                adobe: "Adobe Cloud ($60)",
-                custom: "სხვა თანხა"
+                chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "სხვა თანხა",
+                l_tiktok: "TikTok", l_discord: "Discord", l_email: "იმეილი", l_session: "სესია"
             },
             de: {
                 title: "Digitales Tor",
@@ -179,10 +173,8 @@
                 contacts: "KONTAKTE ▼",
                 pay: "BEZAHLEN ▼",
                 network: "Netzwerk: BNB Chain (BEP-20)",
-                chat: "ChatGPT Plus ($20)",
-                mid: "Midjourney ($30)",
-                adobe: "Adobe Cloud ($60)",
-                custom: "Eigener Betrag"
+                chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "Betrag",
+                l_tiktok: "TikTok", l_discord: "Discord", l_email: "E-Mail", l_session: "Session"
             },
             zh: {
                 title: "数字网关",
@@ -191,10 +183,8 @@
                 contacts: "联系方式 ▼",
                 pay: "快速支付 ▼",
                 network: "网络: BNB Chain (BEP-20)",
-                chat: "ChatGPT Plus ($20)",
-                mid: "Midjourney ($30)",
-                adobe: "Adobe Cloud ($60)",
-                custom: "自定义金额"
+                chat: "ChatGPT Plus ($20)", mid: "Midjourney ($30)", adobe: "Adobe Cloud ($60)", custom: "自定义金额",
+                l_tiktok: "抖音", l_discord: "Discord", l_email: "电子邮件", l_session: "Session"
             }
         };
 
@@ -210,6 +200,10 @@
             document.getElementById('opt-mid').innerText = t.mid;
             document.getElementById('opt-adobe').innerText = t.adobe;
             document.getElementById('opt-custom').innerText = t.custom;
+            document.getElementById('label-tiktok').innerText = t.l_tiktok;
+            document.getElementById('label-discord').innerText = t.l_discord;
+            document.getElementById('label-email').innerText = t.l_email;
+            document.getElementById('label-session').innerText = t.l_session;
             
             document.querySelectorAll('.lang-flag').forEach(f => f.classList.remove('active'));
             event.target.classList.add('active');
