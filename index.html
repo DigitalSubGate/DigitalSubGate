@@ -19,113 +19,134 @@
 
         header {
             width: 100%;
-            padding: 10px 25px;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(15px);
+            padding: 25px 60px;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), transparent);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(56, 189, 248, 0.3);
             position: fixed;
             top: 0; z-index: 1000;
         }
 
-        .logo-group { display: flex; flex-direction: column; }
-        .logo { font-weight: 900; color: #38bdf8; font-size: 18px; letter-spacing: 1px; text-decoration: none; }
-        .soft-link { color: #34d399; font-size: 10px; text-decoration: none; font-weight: bold; }
+        .logo { font-weight: 900; color: #38bdf8; font-size: 28px; letter-spacing: -1px; text-decoration: none; }
 
-        .nav-actions { display: flex; gap: 10px; align-items: center; }
+        .nav-actions { display: flex; gap: 15px; align-items: center; }
 
-        /* ОБЩИЙ СТИЛЬ ДЛЯ КНОПОК-ВЫПАДАШЕК */
-        .dropdown { position: relative; padding-bottom: 10px; margin-bottom: -10px; }
-        
+        .dropdown { position: relative; padding-bottom: 15px; margin-bottom: -15px; }
         .nav-btn { 
-            background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); 
-            padding: 8px 15px; border-radius: 10px; font-weight: 700; 
-            cursor: pointer; font-size: 12px; transition: 0.3s;
+            background: rgba(255, 255, 255, 0.05); color: white; border: 1px solid rgba(255, 255, 255, 0.2); 
+            padding: 10px 22px; border-radius: 30px; font-weight: 600; 
+            cursor: pointer; font-size: 13px; transition: 0.4s;
+            backdrop-filter: blur(5px);
         }
-        .nav-btn:hover { background: #38bdf8; color: #0f172a; }
-
-        .pay-btn-main { background: #38bdf8; color: #0f172a; border: none; }
+        .nav-btn:hover { background: #38bdf8; color: #0f172a; border-color: #38bdf8; transform: translateY(-2px); }
 
         .dropdown-content {
             display: none; position: absolute; right: 0; top: 100%; 
-            background: rgba(21, 32, 51, 0.98); min-width: 320px; padding: 20px;
-            border-radius: 20px; border: 1px solid #38bdf8; backdrop-filter: blur(20px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-top: 5px;
+            background: rgba(15, 23, 42, 0.98); min-width: 340px; padding: 25px;
+            border-radius: 24px; border: 1px solid rgba(56, 189, 248, 0.3); backdrop-filter: blur(25px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8); margin-top: 10px;
         }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* СТИЛЬ ПЛАШЕК С КОПИРОВАНИЕМ (КАК У КОШЕЛЬКА) */
+        /* СПЕЦИАЛЬНЫЙ СТИЛЬ ДЛЯ КОШЕЛЬКА */
+        .wallet-card {
+            background: rgba(52, 211, 153, 0.1); 
+            padding: 15px; border-radius: 18px;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            margin-bottom: 15px;
+        }
+        .wallet-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        .usdt-logo { width: 20px; height: 20px; }
+        .network-badge { 
+            font-size: 9px; background: #34d399; color: #0f172a; 
+            padding: 2px 6px; border-radius: 4px; font-weight: 900;
+        }
+
         .copy-bar {
-            background: rgba(15, 23, 42, 0.6); padding: 8px 12px; border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1); display: flex; 
-            align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05); display: flex; 
+            align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px;
         }
-        .copy-bar:last-child { margin-bottom: 0; }
-        .bar-label { font-size: 9px; color: #94a3b8; text-transform: uppercase; font-weight: 800; min-width: 50px; }
-        .bar-value { font-family: monospace; font-size: 11px; color: #38bdf8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .bar-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 800; }
+        .bar-value { font-family: monospace; font-size: 11px; color: #38bdf8; }
         .mini-copy-btn { 
-            background: #34d399; color: #0f172a; border: none; padding: 4px 8px; 
-            border-radius: 6px; font-size: 9px; font-weight: 900; cursor: pointer; transition: 0.2s;
+            background: #34d399; color: #0f172a; border: none; padding: 6px 12px; 
+            border-radius: 8px; font-size: 10px; font-weight: 900; cursor: pointer;
         }
-        .mini-copy-btn:active { transform: scale(0.9); }
 
         .hero {
             height: 100vh; display: flex; flex-direction: column; 
             justify-content: center; align-items: center; text-align: center; padding: 20px;
         }
-        .hero h1 { font-size: clamp(40px, 8vw, 72px); margin: 0; color: white; text-shadow: 0 5px 25px rgba(0,0,0,0.5); font-weight: 900; }
-        .hero p { font-size: clamp(14px, 2vw, 18px); color: #cbd5e1; max-width: 650px; margin-top: 15px; line-height: 1.5; }
+        .hero h1 { 
+            font-size: clamp(50px, 10vw, 90px); margin: 0; color: white; 
+            font-weight: 900; letter-spacing: -3px;
+            animation: breathe 4s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 30px rgba(56, 189, 248, 0.2); }
+            50% { transform: scale(1.02); text-shadow: 0 0 50px rgba(56, 189, 248, 0.5); }
+        }
 
-        /* ВНУТРЕННОСТИ ШЛЮЗА */
-        .total-box { text-align: center; padding: 15px; background: rgba(56, 189, 248, 0.1); border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.2); }
-        select, input { width: 100%; padding: 10px; background: #0b121f; border: 1px solid #334155; color: white; border-radius: 8px; margin-bottom: 12px; outline: none; }
+        .gift-badge {
+            margin-top: 30px;
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.3);
+            padding: 12px 25px; border-radius: 50px; text-decoration: none;
+            color: #34d399; font-weight: 700; font-size: 14px; transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .gift-badge:hover { background: rgba(52, 211, 153, 0.2); transform: translateY(-5px); }
+
+        .music-control {
+            position: fixed; bottom: 40px; right: 40px;
+            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 10px;
+            cursor: pointer; backdrop-filter: blur(10px); z-index: 1000;
+        }
+
+        select, input { width: 100%; padding: 14px; background: #0b121f; border: 1px solid #334155; color: white; border-radius: 12px; margin-bottom: 15px; outline: none; }
+        .total-box { text-align: center; padding: 20px; background: rgba(56, 189, 248, 0.1); border-radius: 18px; border: 1px solid rgba(56, 189, 248, 0.2); }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-group">
-            <a href="#" class="logo">DigitalSubGate</a>
-            <a href="https://github.com" target="_blank" class="soft-link">🎁 WIN TICK PROJECT</a>
-        </div>
+        <a href="#" class="logo">DigitalSubGate</a>
 
         <div class="nav-actions">
-            <!-- ВЫПАДАЮЩИЕ КОНТАКТЫ -->
             <div class="dropdown">
                 <button class="nav-btn">CONTACTS ▼</button>
                 <div class="dropdown-content">
-                    <!-- Wallet -->
-                    <div class="copy-bar">
-                        <span class="bar-label">Wallet</span>
-                        <span class="bar-value">0xC888...4434</span>
-                        <button class="mini-copy-btn" onclick="copyTxt('0xC8880cF7eE8b1C35Cc08e67Bde17AbF70E554434', this)">COPY</button>
+                    <!-- Специальный блок кошелька -->
+                    <div class="wallet-card">
+                        <div class="wallet-header">
+                            <img src="https://cryptologos.cc" class="usdt-logo" alt="USDT">
+                            <span style="font-weight: 800; font-size: 12px; color: #34d399;">Tether USDT</span>
+                            <span class="network-badge">BEP-20</span>
+                        </div>
+                        <div class="copy-bar" style="margin-bottom: 0; background: rgba(0,0,0,0.2);">
+                            <span class="bar-value">0xC888...4434</span>
+                            <button class="mini-copy-btn" onclick="copyTxt('0xC8880cF7eE8b1C35Cc08e67Bde17AbF70E554434', this)">COPY</button>
+                        </div>
                     </div>
-                    <!-- Discord -->
+
                     <div class="copy-bar">
                         <span class="bar-label">Discord</span>
                         <span class="bar-value">digitalsubgate</span>
                         <button class="mini-copy-btn" onclick="copyTxt('digitalsubgate', this)">COPY</button>
                     </div>
-                    <!-- Session -->
                     <div class="copy-bar">
                         <span class="bar-label">Session</span>
                         <span class="bar-value">059a07...884c14</span>
                         <button class="mini-copy-btn" onclick="copyTxt('059a0732cbb5c44df2ad7665c55ebaff0c80ea04f0d1f4a614ec466b7b6e884c14', this)">COPY</button>
                     </div>
-                    <!-- Email -->
-                    <div class="copy-bar">
-                        <span class="bar-label">Email</span>
-                        <span class="bar-value">DigitalSubGate@proton.me</span>
-                        <button class="mini-copy-btn" onclick="copyTxt('DigitalSubGate@proton.me', this)">COPY</button>
-                    </div>
                 </div>
             </div>
 
-            <!-- ПЛАТЕЖНЫЙ ШЛЮЗ -->
             <div class="dropdown">
-                <button class="nav-btn pay-btn-main">QUICK PAY ▼</button>
+                <button class="nav-btn" style="background: #38bdf8; color: #0f172a; border: none;">QUICK PAY ▼</button>
                 <div class="dropdown-content">
                     <select id="service" onchange="updatePrice()">
                         <option value="20">ChatGPT Plus ($20)</option>
@@ -135,8 +156,7 @@
                     </select>
                     <input type="number" id="customAmount" placeholder="Enter USD" style="display:none;" oninput="updatePrice()">
                     <div class="total-box">
-                        <div style="font-size: 10px; color: #94a3b8; margin-bottom: 5px;">TOTAL TO SEND</div>
-                        <div style="font-size: 28px; font-weight: 900; color: #34d399;"><span id="finalPrice">36.00</span> USDT</div>
+                        <div style="font-size: 32px; font-weight: 900; color: #34d399;"><span id="finalPrice">36.00</span> <span style="font-size: 16px">USDT</span></div>
                         <div style="font-size: 9px; color: #38bdf8; margin-top: 5px;">Network: BEP-20 (BNB Chain)</div>
                     </div>
                 </div>
@@ -145,9 +165,21 @@
     </header>
 
     <div class="hero">
-        <h1>Premium Services</h1>
-        <p>Your gateway to global digital subscriptions. Fast, secure, and powered by crypto.</p>
+        <h1>Digital Gate</h1>
+        <p>Premium digital logistics. Secure gateway to global services powered by blockchain.</p>
+        
+        <a href="https://github.com" target="_blank" class="gift-badge">
+            🎁 FREE GIFT: WinTick Project
+        </a>
     </div>
+
+    <div class="music-control" onclick="toggleMusic()" id="musicBtn">
+        <span id="musicStatus">PLAY AMBIENT</span>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://soundhelix.com" type="audio/mpeg">
+    </audio>
 
     <script>
         function updatePrice() {
@@ -164,13 +196,20 @@
             navigator.clipboard.writeText(text);
             const originalText = btn.innerText;
             btn.innerText = "DONE!";
-            btn.style.background = "#38bdf8";
-            setTimeout(() => {
-                btn.innerText = originalText;
-                btn.style.background = "#34d399";
-            }, 1500);
+            setTimeout(() => { btn.innerText = originalText; }, 1500);
         }
 
+        function toggleMusic() {
+            const audio = document.getElementById('bgMusic');
+            const status = document.getElementById('musicStatus');
+            if (audio.paused) {
+                audio.play();
+                status.innerText = "MUSIC ON";
+            } else {
+                audio.pause();
+                status.innerText = "PLAY AMBIENT";
+            }
+        }
         window.onload = updatePrice;
     </script>
 </body>
