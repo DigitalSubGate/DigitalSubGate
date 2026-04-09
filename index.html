@@ -8,76 +8,65 @@
         * { box-sizing: border-box; }
         
         body { 
-            /* Указываем путь к вашей картинке */
-            background: url('background.png') no-repeat center center fixed; 
+            /* Используйте ваше точное имя файла картинки */
+            background: url('bg.jpg') no-repeat center center fixed; 
             background-size: cover; 
             color: white; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             display: flex; 
             justify-content: center; 
-            align-items: center; /* Центрируем карточку по вертикали */
+            align-items: center; 
             min-height: 100vh;
             padding: 20px; 
             margin: 0; 
         }
 
-        /* Добавляем небольшое размытие или затемнение фона, чтобы карточка выделялась */
+        /* Убираем темную пелену, оставляем только легкий градиент снизу для глубины */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.7); /* Затемнение фона на 70% */
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.5));
             z-index: -1;
         }
         
         .card { 
-            background: rgba(30, 41, 59, 0.95); /* Делаем карточку чуть прозрачной */
-            backdrop-filter: blur(10px); /* Эффект матового стекла */
-            padding: 30px; 
+            /* Стеклянная прозрачность */
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(15px); /* Сильное размытие фона под карточкой */
+            -webkit-backdrop-filter: blur(15px);
+            padding: 25px; 
             border-radius: 24px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8); 
             width: 100%; 
-            max-width: 400px; 
-            border: 1px solid rgba(56, 189, 248, 0.3); 
+            max-width: 380px; /* Чуть уже, чтобы видеть больше фона */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
         }
         
-        h2 { color: #38bdf8; text-align: center; margin: 0 0 5px 0; font-weight: 800; letter-spacing: -1px; font-size: 28px; }
-        .subtitle { font-size: 11px; color: #94a3b8; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        h2 { color: #38bdf8; text-align: center; margin: 0; font-weight: 800; font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .subtitle { font-size: 10px; color: #cbd5e1; text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; }
         
-        label { display: block; margin: 20px 0 10px; font-size: 14px; color: #cbd5e1; font-weight: 600; text-align: left; }
+        label { display: block; margin: 15px 0 8px; font-size: 13px; color: #e2e8f0; font-weight: 600; }
         
-        input, select { width: 100%; padding: 15px; border-radius: 14px; border: 1px solid #334155; background: #0f172a; color: white; font-size: 16px; outline: none; transition: 0.3s; appearance: none; }
-        input:focus, select:focus { border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2); }
+        input, select { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15, 23, 42, 0.8); color: white; font-size: 14px; outline: none; }
         
-        .result { margin-top: 30px; padding: 25px; background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%); border-radius: 20px; text-align: center; border: 1px solid #475569; }
-        .price-label { font-size: 10px; color: #38bdf8; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 800; }
-        .price { font-size: 40px; font-weight: 900; color: #34d399; text-shadow: 0 0 20px rgba(52, 211, 153, 0.3); }
+        .result { margin-top: 20px; padding: 15px; background: rgba(56, 189, 248, 0.1); border-radius: 16px; text-align: center; border: 1px solid rgba(56, 189, 248, 0.2); }
+        .price { font-size: 32px; font-weight: 900; color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.4); }
         
-        .wallet-box { margin-top: 35px; text-align: left; }
-        .info-label { font-size: 10px; color: #64748b; text-transform: uppercase; margin-bottom: 6px; display: block; font-weight: 700; letter-spacing: 1.2px; }
-        
-        .data-text { font-size: 10px; word-break: break-all; background: #0f172a; padding: 12px; border-radius: 12px; border: 1px dashed #334155; color: #38bdf8; font-family: 'Courier New', monospace; margin-bottom: 18px; line-height: 1.4; }
+        .wallet-box { margin-top: 25px; }
+        .data-text { font-size: 9px; background: rgba(15, 23, 42, 0.9); padding: 10px; border-radius: 10px; border: 1px dashed #38bdf8; color: #38bdf8; margin-bottom: 12px; }
         
         .btn { 
             display: block; width: 100%; background: #38bdf8; color: #0f172a; text-align: center; 
-            padding: 18px 10px; border-radius: 16px; text-decoration: none; font-weight: 800; 
-            margin-top: 20px; transition: 0.4s; box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3); 
-            text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer;
+            padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 800; 
+            margin-top: 15px; font-size: 12px; transition: 0.3s;
         }
-        .btn:hover { transform: translateY(-3px); background: #7dd3fc; }
+        .btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
         
-        .free-tools {
-            margin-top: 25px; padding: 20px; background: rgba(56, 189, 248, 0.1); 
-            border: 1px solid #334155; border-radius: 20px; text-align: center;
-        }
-        .free-tools h3 { font-size: 14px; color: #38bdf8; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 1px; }
-        .tool-link {
-            display: inline-block; color: #34d399; text-decoration: none; font-size: 12px; 
-            font-weight: 700; border: 1px solid #34d399; padding: 8px 20px; border-radius: 10px; transition: 0.3s;
-        }
-        .tool-link:hover { background: #34d399; color: #0f172a; }
+        .free-tools { margin-top: 20px; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 16px; text-align: center; }
+        .tool-link { color: #34d399; text-decoration: none; font-size: 11px; font-weight: 700; border: 1px solid #34d399; padding: 6px 15px; border-radius: 8px; }
 
-        .footer-note { font-size: 10px; color: #94a3b8; margin-top: 25px; text-align: center; line-height: 1.6; font-style: italic; }
+        .footer-note { font-size: 9px; color: #94a3b8; margin-top: 15px; text-align: center; }
     </style>
 </head>
 <body>
@@ -85,7 +74,7 @@
         <h2>DigitalSubGate</h2>
         <div class="subtitle">Premium Digital Logistics 🌐</div>
         
-        <label>Select Subscription Service:</label>
+        <label>Select Service:</label>
         <select id="service" onchange="updatePrice()">
             <option value="20">ChatGPT Plus Premium ($20)</option>
             <option value="30">Midjourney Standard ($30)</option>
@@ -94,64 +83,35 @@
             <option value="0">Manual Amount ($)</option>
         </select>
         
-        <input type="number" id="customAmount" placeholder="Enter custom USD amount" style="display:none; margin-top:12px;" oninput="updatePrice()" onkeyup="updatePrice()">
+        <input type="number" id="customAmount" placeholder="Enter amount" style="display:none; margin-top:10px;" oninput="updatePrice()">
 
         <div class="result">
-            <div class="price-label">Total to Transfer:</div>
             <div class="price" id="finalPrice">...</div>
         </div>
 
         <div class="wallet-box">
-            <span class="info-label">Network: <b>USDT (BEP-20 / BNB Chain)</b></span>
             <div class="data-text">0xC8880cF7eE8b1C35Cc08e67Bde17AbF70E554434</div>
-            
-            <span class="info-label">Secure Contact (Discord):</span>
-            <div class="data-text">digitalsubgate</div>
-            
-            <span class="info-label">Secure Contact (Session ID):</span>
-            <div class="data-text">059a0732cbb5c44df2ad7665c55ebaff0c80ea04f0d1f4a614ec466b7b6e884c14</div>
-           
-            <span class="info-label">Support Email:</span>
-            <div class="data-text">DigitalSubGate@proton.me</div>
+            <div class="data-text">digitalsubgate (Discord)</div>
         </div>
         
-        <div style="display: flex; gap: 12px; margin-top: 25px;">
-            <a href="https://discord.com" target="_blank" class="btn" style="flex: 1; margin-top: 0; background: #5865F2; color: white; font-size: 12px; padding: 15px 0;">DISCORD</a>
-            <a href="mailto:DigitalSubGate@proton.me" class="btn" style="flex: 1; margin-top: 0; background: #38bdf8; color: #0f172a; font-size: 12px; padding: 15px 0;">EMAIL</a>
-        </div>
+        <a href="https://discord.com" target="_blank" class="btn">OPEN DISCORD</a>
 
         <div class="free-tools">
-            <h3>🎁 Free Software</h3>
-            <p style="font-size: 11px; color: #94a3b8; margin-bottom: 12px; line-height: 1.4;">
-                Try our <b>WinTick Alarm Clock</b> — Smart & Multi-language tool.
-            </p>
-            <a href="https://github.com" target="_blank" class="tool-link">
-                VIEW ON GITHUB
-            </a>
+            <p style="font-size: 10px; margin-bottom: 10px;">WinTick Alarm Clock Project</p>
+            <a href="https://github.com" target="_blank" class="tool-link">GITHUB</a>
         </div>
 
-        <div class="footer-note">
-            * Transactions processed via <b>USDT BEP-20</b> protocol only.<br>
-            Please provide transaction hash after payment.
-        </div>
+        <div class="footer-note">* USDT BEP-20 only</div>
     </div>
 
     <script>
         function updatePrice() {
-            const serviceSelector = document.getElementById('service');
-            const customInput = document.getElementById('customAmount');
-            
-            if (serviceSelector.value === "0") {
-                customInput.style.display = "block";
-            } else {
-                customInput.style.display = "none";
-            }
-
-            let baseValue = (serviceSelector.value === "0") ? customInput.value : serviceSelector.value;
-            let numericAmount = parseFloat(baseValue) || 0;
-            let totalUsdt = (numericAmount > 0) ? (numericAmount + 16) : 0;
-            
-            document.getElementById('finalPrice').innerText = totalUsdt.toFixed(2) + " USDT";
+            const s = document.getElementById('service');
+            const c = document.getElementById('customAmount');
+            c.style.display = (s.value === "0") ? "block" : "none";
+            let val = (s.value === "0") ? c.value : s.value;
+            let res = (parseFloat(val) || 0) + (parseFloat(val) > 0 ? 16 : 0);
+            document.getElementById('finalPrice').innerText = res.toFixed(2) + " USDT";
         }
         window.onload = updatePrice;
     </script>
